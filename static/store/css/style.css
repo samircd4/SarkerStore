@@ -1,0 +1,13 @@
+/* Working   */
+
+.pe-7s-shopbag{
+    color: #fff;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
+    width: 25%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+}

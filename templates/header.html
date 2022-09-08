@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cart_tag %}
+<html lang="zxx" dir="ltr">
+
+
+<!-- Mirrored from template.hasthemes.com/hmart/hmart/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Sep 2021 18:04:02 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarker Shop | Kishoreganj</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <!-- CSS============================= -->
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    {% comment %} <link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/venobox.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css"> {% endcomment %}
+    <!-- Style CSS -->
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="{% static 'store/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+    
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <header>
+            <!-- Header top area start -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col">
+                            <div class="welcome-text">
+                                <p>In Kishoreganj Completely Free Returns and Shipping</p>
+                            </div>
+                        </div>
+                        <div class="col d-none d-lg-block">
+                            <div class="top-nav">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-phone"></i> +8801781355377</a></li>
+                                    <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> nileshsrk94@gmail.com</a></li>
+                                    {% comment %} {% if user.is_authenticated %}
+                                    <li><a href="#"><i class="fa fa-envelope-o"></i>{{user.username}}</a></li>
+                                    {% endif %} {% endcomment %}
+                                    {% if user.is_authenticated %}
+                                    <li>
+                                        <a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'account' %}"><i class="fa fa-user"></i> Account</a>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        <a href="{% url 'login' %}"><i class="fa fa-user"></i> Login</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header top area end -->
+            <!-- Header action area start -->
+            <div class="header-bottom  d-none d-lg-block">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-3 col">
+                            <div class="header-logo">
+                                <a id="logo" href="{% url 'index' %}"> <h2 style="font-size:38px; color:#fff;">Sarker Shop</h2> </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="search-element">
+                                <form action="">
+                                    <input name="q" type="text" placeholder="Search" />
+                                    <button type="submit"><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col">
+                            <div class="header-actions">
+                                <!-- Single Wedge Start -->
+                                <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
+                                    <i class="pe-7s-like"></i>
+                                    <span class="header-action-num">02</span>
+                                </a>
+                                <!-- Single Wedge End -->
+                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="header-action-num">{{request.session.cart|length}}</span>
+                                    <!-- <span class="cart-amount">€30.00</span> -->
+                                </a>
+                                <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                                    <i class="pe-7s-menu"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header action area end -->
+            <!-- Header action area start -->
+            <div class="header-bottom d-lg-none sticky-nav style-1">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-3 col">
+                            <div class="header-logo">
+                                <a href="{% url 'index' %}"><h2 style="color: #fff;">Sarker Shop</h2></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="search-element">
+                                <form action="#">
+                                    <input type="text" placeholder="Search" />
+                                    <button><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col">
+                            <div class="header-actions">
+                                <!-- Single Wedge Start -->
+                                <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
+                                    <i class="pe-7s-like"></i>
+                                    <span class="header-action-num">02</span>
+                                </a>
+                                <!-- Single Wedge End -->
+                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="header-action-num">{{request.session.cart|length}}</span>
+                                    <!-- <span class="cart-amount">€30.00</span> -->
+                                </a>
+                                <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                                    <i class="pe-7s-menu"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header action area end -->
+            <!-- header navigation area start -->
+            <div class="header-nav-area d-none d-lg-block sticky-nav">
+                <div class="container">
+                    <div class="header-nav">
+                        <div class="main-menu position-relative">
+                            <ul>
+                                <li class="dropdown"><a href="{% url 'index' %}">Home</a>
+                                </li>
+                                <li class="dropdown position-static"><a href="{% url 'shop' %}">Shop</a>
+                                </li>
+                                <li class="dropdown "><a href="#">Blog</a>
+                                </li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- header navigation area end -->
+            <div class="mobile-search-box d-lg-none">
+                <div class="container">
+                    <!-- mobile search start -->
+                    <div class="search-element max-width-100">
+                        <form action="#">
+                            <input type="text" placeholder="Search" />
+                            <button><i class="pe-7s-search"></i></button>
+                        </form>
+                    </div>
+                    <!-- mobile search start -->
+                </div>
+            </div>
+        </header>
+        <!-- offcanvas overlay start -->
+        <div class="offcanvas-overlay"></div>
+        <!-- offcanvas overlay end -->
+        <!-- OffCanvas Wishlist Start -->
+        <div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
+            <div class="inner">
+                <div class="head">
+                    <span class="title">Wishlist</span>
+                    <button class="offcanvas-close">×</button>
+                </div>
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                        <li>
+                            <a href="single-product.html" class="image"><img src="{% static 'store/images/product-image/1.webp' %}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Modern Smart Phone</a>
+                                <span class="quantity-price">1 x <span class="amount">21.86 BDT</span></span>
+                                <a href="#" class="remove">×</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="single-product.html" class="image"><img src="{% static 'store/images/product-image/2.webp' %}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Bluetooth Headphone</a>
+                                <span class="quantity-price">1 x <span class="amount">BDT 13.28</span></span>
+                                <a href="#" class="remove">×</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="single-product.html" class="image"><img src="{% static 'store/images/product-image/3.webp' %}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Smart Music Box</a>
+                                <span class="quantity-price">1 x <span class="amount">BDT 17.34</span></span>
+                                <a href="#" class="remove">×</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="buttons">
+                        <a href="#" class="btn btn-dark btn-hover-primary mt-30px">view wishlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- OffCanvas Wishlist End -->
+        <!-- OffCanvas Cart Start -->
+        <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
+            <div class="inner">
+                <div class="head">
+                    <span class="title">Cart</span>
+                    <button class="offcanvas-close">×</button>
+                </div>
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                        {% if request.session.cart|length < 1 %}
+                        Your cart item is empty 😥 <a href="{% url 'shop' %}">Continue shopping</a>
+                        {% else %}
+                        {% for key,value in request.session.cart.items %}
+                        <li>
+                            <a href="{% url 'cart_detail' %}" class="image"><img src="{{value.image}}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a title="{{value.name}}" href="{% url 'cart_detail' %}" class="title">{{value.name|truncatewords:10}}</a>
+                                <span class="quantity-price">{{value.quantity}} x <span class="amount">{{value.price|multiply:value.quantity}} BDT</span><a href="{% url 'item_clear' key %}" class="remove"><i class="fa fa-trash"></i></a></span>
+                                
+                            </div>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="buttons mt-30px">
+                        <a href="{% url 'cart_detail' %}" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
+                        <a href="{% url 'checkout' %}" class="btn btn-outline-dark current-btn">checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- OffCanvas Cart End -->
+        <!-- OffCanvas Menu Start -->
+        <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
+            <button class="offcanvas-close"></button>
+            <div class="user-panel">
+                <ul>
+                    <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +880 1781 355 377</a></li>
+                    <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> nileshsrk94@gmail.com</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}"><i class="fa fa-user"></i> Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="inner customScroll">
+                <div class="offcanvas-menu mb-4">
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a>
+                        <li><a href="{% url 'shop' %}"><span class="menu-text">Shop</span></a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="#"><span class="menu-text">Smart Phones</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="menu-text">Accesories</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        </li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- OffCanvas Menu End -->
+                
+    </div>
+</div>
+        <!-- OffCanvas Menu End -->

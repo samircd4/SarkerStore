@@ -1,0 +1,533 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+        <!-- breadcrumb-area start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 text-center">
+                        <h2 class="breadcrumb-title">Single Product</h2>
+                        <!-- breadcrumb-list start -->
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Product</li>
+                        </ul>
+                        <!-- breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb-area end -->
+        <!-- Product Details Area Start -->
+        {% for product in products %}
+        <div class="product-details-area pt-100px pb-100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                        <!-- Swiper -->
+                        <div class="swiper-container zoom-top">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto" src="{{product.image.url}}" alt="">
+                                    <a class="venobox full-preview" data-gall="myGallery" href="{{product.image.url}}">
+                                        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                {% for img in product.images_set.all %}
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto" src="{{img.img.url}}" alt="">
+                                    <a class="venobox full-preview" data-gall="myGallery" href="{{img.img.url}}">
+                                        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto" src="{{product.image.url}}" alt="">
+                                </div>
+                                {% for img in product.images_set.all %}
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto" src="{{img.img.url}}" alt="">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-buttons">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                        <div class="product-details-content quickview-content ml-25px">
+                            <h2 title="{{product.name}}">{{product.name| truncatechars:50}}</h2>
+                            <div class="pricing-meta">
+                                <ul class="d-flex">
+                                    <li class="new-price">{{product.price}} BDT</li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-rating-wrap">
+                                <div class="rating-product">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <span class="read-review"><a class="reviews" href="#">(5 Customer Review)</a></span>
+                            </div>
+                            <p class="mt-30px">{{product.description| truncatechars:150}}</p>
+                            <!--<div class="product-details-table table-responsive pro-details-quality">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="quantity d-flex">
+                                                    <div class="cart-plus-minus">
+                                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><a href="#">Modern Smart Phone</a></td>
+                                            <td><span class="amount">$18.00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="quantity d-flex">
+                                                    <div class="cart-plus-minus">
+                                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><a href="#">Smart Music Box</a></td>
+                                            <td><span class="amount">$18.00</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>-->
+                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                <span>SKU:</span>
+                                <ul class="d-flex">
+                                    <li>
+                                        <a href="#">Ch-256xl</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                <span>Categories: </span>
+                                <ul class="d-flex">
+                                    <li>
+                                        <a href="#">Smart Device, </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">ETC</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                <span>Tags: </span>
+                                <ul class="d-flex">
+                                    <li>
+                                        <a href="#">Smart Device, </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Phone</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-quality">
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                                <div class="pro-details-cart">
+                                    <a href="{% url 'cart_add' product.id %}" class="add-cart m-0"> Add To
+                                        Cart</a>
+                                </div>
+                                <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                                    <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                </div>
+                                <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                                    <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product details description area start -->
+                        <div class="description-review-wrapper">
+                            <div class="description-review-topbar nav">
+                                <button data-bs-toggle="tab" data-bs-target="#des-details2">Information</button>
+                                <button class="active" data-bs-toggle="tab" data-bs-target="#des-details1">Description</button>
+                                <button data-bs-toggle="tab" data-bs-target="#des-details3">Reviews (02)</button>
+                            </div>
+                            <div class="tab-content description-review-bottom">
+                                <div id="des-details2" class="tab-pane">
+                                    <div class="product-anotherinfo-wrapper text-start">
+                                        {% comment %} <p>{{product.info}}</p> {% endcomment %}
+                                        <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>RAM</td>
+                                                <td>64 GB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>RAM</td>
+                                                <td>64 GB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>RAM</td>
+                                                <td>64 GB</td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="des-details1" class="tab-pane active">
+                                    <div class="product-description-wrapper">
+                                        <p>
+                                            {{product.description}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="des-details3" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="review-wrapper">
+                                                <div class="single-review">
+                                                    <div class="review-img">
+                                                        <img src="{% static 'store/images/review-image/1.png' %}" alt="" />
+                                                    </div>
+                                                    <div class="review-content">
+                                                        <div class="review-top-wrap">
+                                                            <div class="review-left">
+                                                                <div class="review-name">
+                                                                    <h4>White Lewis</h4>
+                                                                </div>
+                                                                <div class="rating-product">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="review-left">
+                                                                <a href="#">Reply</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-bottom">
+                                                            <p>
+                                                                Vestibulum ante ipsum primis aucibus orci luctustrices posuere
+                                                                cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper
+                                                                euismod vehicula. Phasellus quam nisi, congue id nulla.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="single-review child-review">
+                                                    <div class="review-img">
+                                                        <img src="{% static 'store/images/review-image/2.png' %}" alt="" />
+                                                    </div>
+                                                    <div class="review-content">
+                                                        <div class="review-top-wrap">
+                                                            <div class="review-left">
+                                                                <div class="review-name">
+                                                                    <h4>White Lewis</h4>
+                                                                </div>
+                                                                <div class="rating-product">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="review-left">
+                                                                <a href="#">Reply</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-bottom">
+                                                            <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere
+                                                                cubilia Curae Sus pen disse viverra ed viverra. Mauris ullarper
+                                                                euismod vehicula.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="ratting-form-wrapper pl-50">
+                                                <h3>Add a Review</h3>
+                                                <div class="ratting-form">
+                                                    <form action="#">
+                                                        <div class="star-box">
+                                                            <span>Your rating:</span>
+                                                            <div class="rating-product">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="rating-form-style">
+                                                                    <input placeholder="Name" type="text" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="rating-form-style">
+                                                                    <input placeholder="Email" type="email" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="rating-form-style form-submit">
+                                                                    <textarea name="Your Review" placeholder="Message"></textarea>
+                                                                    <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product details description area end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Product Area Start -->
+        <div class="product-area related-product">
+            <div class="container">
+                <!-- Section Title & Tab Start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title text-center m-0">
+                            <h2 class="title">Related Products</h2>
+                            <p>There are many variations of passages of Lorem Ipsum available</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section Title & Tab End -->
+                <div class="row">
+                    <div class="col">
+                        <div class="new-product-slider swiper-container slider-nav-style-1">
+                            <div class="swiper-wrapper">
+                                {% for product in all_products %}
+                                <!-- Slider Prodect -->
+                                <div class="swiper-slide">
+                                    <div class="product">
+                                        <span class="badges">
+                                        <span class="new">New {{forloop.counter}}</span>
+                                        </span>
+                                        <div class="thumb">
+                                            <a href="{{product.id}}" class="image">
+                                                <img src="{{product.image.url}}" alt="Product" />
+                                                <img class="hover-image" src="{{product.image.url}}" alt="Product" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <span class="category"><a href="#">{{product.categorie}}</a></span>
+                                            <h5 class="title"><a href="#">{{product.name| truncatechars:25}}</a>
+                                            </h5>
+                                            <span class="price">
+                                            <span class="new">{{product.price}} BDT</span>
+                                            </span>
+                                        </div>
+                                        <div class="actions">
+                                            <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                class="pe-7s-shopbag"></i></button>
+                                            <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal-{{forloop.counter}}"><i class="pe-7s-look"></i></button>
+                                            <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
+                                                    class="pe-7s-refresh-2"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Slider Prodect -->
+                                {% endfor %}
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-buttons">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Area End -->
+
+    <!-- Modal -->
+    {% for product in products %}
+    <div class="modal modal-2 fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                            <!-- Swiper -->
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{product.image.url}}" alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{product.image.url}}" alt="">
+                                    </div>
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-buttons">
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                            
+                            <div class="product-details-content quickview-content">
+                                <h2>{{product.name| truncatechars:50}}</h2>
+                                <div class="pricing-meta">
+                                    <ul class="d-flex">
+                                        <li class="new-price">{{product.price}} BDT</li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-rating-wrap">
+                                    <div class="rating-product">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="read-review"><a class="reviews" href="#">( 2 Review )</a></span>
+                                </div>
+                                <p class="mt-30px">{{i.description |truncatechars:250}}</p>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>SKU:</span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Ch-256xl</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Categorie: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">{{product.categorie}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Tags: </span>
+                                    <ul class="d-flex">
+                                        {% for tag in product.tag_set.all %}
+                                        <li>
+                                            <a href="#"> {{tag.name}} ,</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="pro-details-quality">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    </div>
+                                    <div class="pro-details-cart">
+                                        <a href="{% url 'cart_add' product.id %}" class="add-cart"> Add To
+                                            Cart</a>
+                                    </div>
+                                    <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                                        <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                    </div>
+                                </div>
+                                <div class="payment-img">
+                                    <a href="#"><img src="{% static 'store/images/icons/payment.png' %}" alt=""></a>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- Modal Cart -->
+    <div class="modal customize-class fade" id="exampleModal-Cart" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Added to cart successfully!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'store/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
+    <!-- Modal wishlist -->
+    <div class="modal customize-class fade" id="exampleModal-Wishlist" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Added to Wishlist successfully!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'store/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <!-- Modal compare -->
+    <div class="modal customize-class fade" id="exampleModal-Compare" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Added to compare successfully!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'store/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+{% endblock content %}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+        <!-- breadcrumb-area start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 text-center">
+                        <h2 class="breadcrumb-title">Contact Us</h2>
+                        <!-- breadcrumb-list start -->
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">Contact</li>
+                        </ul>
+                        <!-- breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb-area end -->
+        <!-- Contact Area Start -->
+        <div class="contact-area">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contact-form">
+                                <div class="contact-title mb-30">
+                                    <h2 class="title">Send A Quest</h2>
+                                </div>
+                                <form class="contact-form-style" id="contact-form" action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input name="name" placeholder="Name*" type="text" />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input name="email" placeholder="Email*" type="email" />
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input name="subject" placeholder="Subject*" type="text" />
+                                        </div>
+                                        <div class="col-lg-12 text-center">
+                                            <textarea name="message" placeholder="Your Message*"></textarea>
+                                            <button class="btn btn-primary" type="submit">Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <p class="form-messege"></p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="contact-info">
+                                <div class="single-contact">
+                                    <div class="icon-box">
+                                        <img src="assets/images/icons/contact-1.png" alt="">
+                                    </div>
+                                    <div class="info-box">
+                                        <h5 class="title">Address</h5>
+                                        <p>32, Kishoreganj<br>
+                                        Dhaka, Bangladesh</p>
+                                    </div>
+                                </div>
+                                <div class="single-contact">
+                                    <div class="icon-box">
+                                        <img src="assets/images/icons/contact-2.png" alt="">
+                                    </div>
+                                    <div class="info-box">
+                                        <h5 class="title">Phone No</h5>
+                                        <p><a href="tel:0123456789">+880 1781 355 377</a></p>
+                                        <p><a href="tel:0123456789">+880 1621 269 500</a></p>
+                                    </div>
+                                </div>
+                                <div class="single-contact m-0">
+                                    <div class="icon-box">
+                                        <img src="assets/images/icons/contact-3.png" alt="">
+                                    </div>
+                                    <div class="info-box">
+                                        <h5 class="title">Email/Web</h5>
+                                        <p><a href="mailto:demo@example.com">nileshsrk94@gmail.com</a></p>
+                                        <p><a href="https://www.example.com/">www.sarkershop.com</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Area End -->
+        <!-- map Area Start -->
+        <div class="contact-map">
+            <div id="mapid">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.285195473447!2d90.7721706153801!3d24.440888684253537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3756923d1ee60587%3A0xaa169efe42db6cfe!2sGurudayal%20Govt.%20College!5e0!3m2!1sen!2sbd!4v1658775061377!5m2!1sen!2sbd"></iframe>
+
+                        
+                        <a href="https://sites.google.com/view/maps-api-v2/mapv2"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- map Area End -->
+{% endblock content %}
